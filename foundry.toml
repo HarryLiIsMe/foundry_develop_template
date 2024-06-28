@@ -1,6 +1,29 @@
 [profile.default]
 src = "src"
-out = "out"
 libs = ["lib"]
+# libs = ["dependencies"]
+out = "build/abis"
+# out = "build/artifacts"
+cache_path = "build/cache"
+build_info = true
+build_info_path = "build/build-info"
+gas_reports = ['*']
+remappings = [
+    '@forge-std=lib/forge-std/',
+    '@openzeppelin=lib/openzeppelin-contracts/',
+    '@openzeppelin-upgradeable=lib/openzeppelin-contracts-upgradeable'
+]
+
+
+[profile.dev]
+eth_rpc_url="http://127.0.0.1:8545"
+
+
+[profile.testnet]
+eth_rpc_url="http://127.0.0.1:8545"
+
+
+[profile.mainnet]
+eth_rpc_url="http://127.0.0.1:8545"
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
