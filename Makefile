@@ -13,7 +13,7 @@ include .env
 
 .PHONY: build test
 
-all: build
+all: rebuild
 
 install:
 	forge install
@@ -41,6 +41,8 @@ compile:
 
 build: compile types
 
+rebuild: clean build
+
 clean:
 	forge clean
 	$(RM) -rf build
@@ -58,4 +60,4 @@ dep:
 task1:
 	# source .env
 	forge script script/Counter.s.sol:CounterScript --private-key $(PRIVATE_KEY) -v --broadcast
-	forge script script/Counter.s.sol -s "run(uint256 v1)" --private-key $(PRIVATE_KEY) -v --broadcast 20
+	forge script script/Counter.s.sol -s "run(uint256)" --private-key $(PRIVATE_KEY) -v --broadcast 20
