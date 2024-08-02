@@ -28,7 +28,6 @@ lint:
 	solhint -c .solhint.json src/*.sol script/*.sol test/*.sol
 
 chain:
-	# source .env
 	anvil --host 127.0.0.1 -p 8545 --chain-id 1234 -b 5 -a 10 --balance 10000000000000
 
 types:
@@ -48,14 +47,18 @@ clean:
 	$(RM) -rf build
 
 test:
-	# source .env
 	forge test --gas-report -vv
 	# forge snapshot --gas-report --snap gas_usage1.txt
 	# forge snapshot --gas-report --diff gas_usage1.txt
 
 dep:
 	# source .env
-	forge create src/Counter.sol:Counter --constructor-args "10" --private-key $(PRIVATE_KEY)
+	forge create src/Counter.sol:Counter --constructor-args 10 --private-key $(PRIVATE_KEY)
+	forge create src/Counter.sol:Counter --verify --verifier blockscout --constructor-args 10 --private-key $(PRIVATE_KEY)
+
+verify:
+	# source .env
+	forge verify-contract --watch -c $(CHAIN_ID) --constructor-args $$(cast abi-encode "constructor(uint256)" 10) --compiler-version $(COMPILER_VERSION) -e $(ETHERSCAN_API_KEY) $(CONTR_ADDR) src/Counter.sol:Counter
 
 task1:
 	# source .env
