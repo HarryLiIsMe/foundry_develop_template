@@ -35,13 +35,17 @@ tab_width = 4
 
 [profile.dev]
 eth_rpc_url="http://127.0.0.1:8545"
+chain_id=9527
 
 
 [profile.testnet]
 eth_rpc_url="https://rpc.sepolia.org"
+chain_id=11155111
 
 
 [profile.mainnet]
 eth_rpc_url="http://127.0.0.1:8545"
+chain_id=1
+
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

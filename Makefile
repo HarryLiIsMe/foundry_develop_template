@@ -28,7 +28,7 @@ lint:
 	solhint -c .solhint.json src/*.sol script/*.sol test/*.sol
 
 chain:
-	anvil --host 127.0.0.1 -p 8545 --chain-id 1234 -b 5 -a 10 --balance 10000000000000
+	anvil --host 127.0.0.1 -p 8545 --chain-id 9527 -b 5 -a 10 --balance 10000000000000
 
 types:
 	typechain --target ethers-v6 --out-dir build/types 'build/abis/**/*.json'
