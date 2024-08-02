@@ -53,12 +53,12 @@ test:
 
 dep:
 	# source .env
-	forge create src/Counter.sol:Counter --constructor-args 10 --private-key $(PRIVATE_KEY)
-	forge create src/Counter.sol:Counter --verify --verifier blockscout --constructor-args 10 --private-key $(PRIVATE_KEY)
+	forge create --value 0.0001ether src/Counter.sol:Counter --constructor-args 10 --private-key $(PRIVATE_KEY)
+	forge create --value 0.0001ether src/Counter.sol:Counter --verify --verifier blockscout --constructor-args 10 --private-key $(PRIVATE_KEY)
 
 verify:
 	# source .env
-	forge verify-contract --watch -c $(CHAIN_ID) --constructor-args $$(cast abi-encode "constructor(uint256)" 10) --compiler-version $(COMPILER_VERSION) -e $(ETHERSCAN_API_KEY) $(CONTR_ADDR) src/Counter.sol:Counter
+	forge verify-contract --watch --constructor-args $$(cast abi-encode "constructor(uint256)" 10) -e $(ETHERSCAN_API_KEY) $(CONTR_ADDR) src/Counter.sol:Counter
 
 task1:
 	# source .env
