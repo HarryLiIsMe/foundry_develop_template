@@ -54,7 +54,7 @@ test:
 dep:
 	# source .env
 	forge create --private-key $(PRIVATE_KEY) --broadcast --value 0.0001ether src/Counter.sol:Counter --constructor-args 10
-	forge create --private-key $(PRIVATE_KEY) --broadcast --verify --verifier etherscan -e $(ETHERSCAN_API_KEY) --value 0.0001ether src/Counter.sol:Counter --constructor-args 10
+	forge create --private-key $(PRIVATE_KEY) --broadcast --value 0.0001ether src/Counter.sol:Counter --constructor-args 10 --verify --verifier etherscan -e $(ETHERSCAN_API_KEY) 
 
 verify:
 	# source .env
